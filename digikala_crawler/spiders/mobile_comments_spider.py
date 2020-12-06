@@ -35,15 +35,17 @@ class MobileCommentsSpider(scrapy.Spider):
         product_id = url.split('/')[4].split('-')[1]
         product_title = response.css('section.c-product__info .c-product__title::text').get()
         title_splitted = product_title.split('مدل')
-        title = title_splitted[0].split('گوشی موبایل')[1]
-        model = title_splitted[1]
+        brand = response.css('section.c-product__info .c-product__directory .product-brand-title::text').get()
+        if len(title_splitted) == 2:
+            model = title_splitted[1]
+        else:
+            model = title_splitted[0].split('گوشی موبایل')[1]
         rate = response.css('.c-product__engagement .c-product__engagement-rating::text').get()
-        # print(item['product_id'], item['rate'], item['brand'], item['model'])
 
         comments_url = 'https://www.digikala.com/ajax/product/comments/{}'.format(product_id)
         comment_request = response.follow(comments_url, self.parse_comments)
         comment_request.meta['product_id'] = product_id
-        comment_request.meta['brand'] = title
+        comment_request.meta['brand'] = brand
         comment_request.meta['model'] = model
         comment_request.meta['rate'] = rate
         yield comment_request
