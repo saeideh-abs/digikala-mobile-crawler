@@ -1,2 +1,4 @@
-digikala_crawler/__pycache__/*
-.idea
+/digikala_crawler/__pycache__/*
+.idea/*
+output/*
+venv
