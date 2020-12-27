@@ -10,6 +10,7 @@ class DigikalaCrawlerItem(scrapy.Item):
     # define the fields for your item here like:
     product_id = scrapy.Field()
     brand = scrapy.Field()
+    category = scrapy.Field()
     model = scrapy.Field()
     rate = scrapy.Field()
     holder = scrapy.Field()
