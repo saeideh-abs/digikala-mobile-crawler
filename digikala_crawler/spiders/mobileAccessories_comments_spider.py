@@ -10,10 +10,10 @@ from digikala_crawler.items import DigikalaCrawlerItem
 
 
 class StorageCommentsSpider(scrapy.Spider):
-    name = 'homeAppliance_comments_spider'
+    name = 'mobileAccessories_comments_spider'
     i = 0
     # sort by most visited by default
-    start_urls = ['https://www.digikala.com/search/category-home-appliance/?sortby=7']
+    start_urls = ['https://www.digikala.com/search/category-mobile-accessories/?sortby=7']
 
     def parse(self, response):
         products_link = response.css('ul.c-listing__items li div.c-product-box a.c-product-box__img')
