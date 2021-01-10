@@ -13,7 +13,7 @@ SPIDER_MODULES = ['digikala_crawler.spiders']
 NEWSPIDER_MODULE = 'digikala_crawler.spiders'
 FEED_EXPORT_ENCODING = 'utf-8'
 LOG_LEVEL = 'WARNING'
-DOWNLOAD_DELAY = 1
+DOWNLOAD_DELAY = 0.1
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = 'cool_pro (http://www.digikala.com)'
 
