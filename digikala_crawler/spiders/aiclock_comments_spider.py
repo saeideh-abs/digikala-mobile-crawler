@@ -10,10 +10,10 @@ from digikala_crawler.items import DigikalaCrawlerItem
 
 
 class StorageCommentsSpider(scrapy.Spider):
-    name = 'camera_comments_spider'
+    name = 'stationery_comments_spider'
     i = 0
     # sort by most visited by default
-    start_urls = ['https://www.digikala.com/search/category-camera/?sortby=7']
+    start_urls = ['https://www.digikala.com/search/category-stationery/?sortby=7']
 
     def parse(self, response):
         products_link = response.css('ul.c-listing__items li div.c-product-box a.c-product-box__img')
@@ -23,7 +23,7 @@ class StorageCommentsSpider(scrapy.Spider):
         next_page = int(current_page) + 1
         next_page_url = response.css('.c-listing ul.c-pager__items li a.is-active') \
             .xpath('../following-sibling::li[1]//a/@href').extract_first()
-        if next_page < 277 and next_page_url is not None:
+        if next_page_url is not None:
             yield response.follow(next_page_url, callback=self.parse)
 
     def parse_product(self, response):
